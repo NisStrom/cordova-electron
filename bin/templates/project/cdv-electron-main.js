@@ -38,6 +38,7 @@ function createWindow () {
         appIcon = `${__dirname}/img/logo.png`;
     }
 
+    process.env.GOOGLE_API_KEY = cdvElectronSettings.GOOGLE_API_KEY;
     const browserWindowOpts = Object.assign({}, cdvElectronSettings.browserWindow, { icon: appIcon });
     mainWindow = new BrowserWindow(browserWindowOpts);
 
