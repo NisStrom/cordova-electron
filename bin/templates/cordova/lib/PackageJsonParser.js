@@ -53,7 +53,7 @@ Packages defined as a dependency will be bundled with the application and can in
 `);
                 }
 
-                this.package.dependencies = projectPackageJson.dependencies;
+               // this.package.dependencies = projectPackageJson.dependencies;
             }
 
             this.configureHomepage(config);
