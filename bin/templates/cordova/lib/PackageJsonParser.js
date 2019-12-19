@@ -53,7 +53,13 @@ Packages defined as a dependency will be bundled with the application and can in
 `);
                 }
 
-               // this.package.dependencies = projectPackageJson.dependencies;
+                var dependecies = {};
+                for (var npmPackage in projectPackageJson.dependencies) {
+                    if ( projectPackageJson.dependencies.hasOwnProperty(npmPackage) && !/^cordova(?!-plugin)-/.test(npmPackage)) {
+                        dependecies[npmPackage] = projectPackageJson.dependencies[npmPackage];
+                    }
+                }
+                this.package.dependencies = dependecies;
             }
 
             this.configureHomepage(config);
