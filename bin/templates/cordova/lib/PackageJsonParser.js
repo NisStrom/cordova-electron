@@ -37,6 +37,10 @@ class PackageJsonParser {
             this.package.version = config.version() || '1.0.0';
             this.package.description = config.description() || 'A sample Apache Cordova application that responds to the deviceready event.';
 
+            if (projectPackageJson.optionalDependencies) {
+                this.package.dependencies = projectPackageJson.optionalDependencies;
+            }
+
             this.configureHomepage(config);
             this.configureLicense(config);
 
