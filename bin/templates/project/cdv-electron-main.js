@@ -63,17 +63,18 @@ function createWindow () {
     });
 }
 
-var shouldQuit = app.makeSingleInstance(function(commandLine, workingDirectory) {
-    // Someone tried to run a second instance, we should focus our window.
-    if (mainWindow) {
-        if (mainWindow.isMinimized()) mainWindow.restore();
-        mainWindow.focus();
-    }
-});
+var gotTheLock  = app.requestSingleInstanceLock();
 
-if (shouldQuit) {
+if (!gotTheLock) {
     app.quit();
-    return;
+} else {
+    app.on('second-instance', (event, commandLine, workingDirectory) => {
+        // Someone tried to run a second instance, we should focus our window.{app}.
+        if (mainWindow) {
+            if (mainWindow.isMinimized()) mainWindow.restore();
+            mainWindow.focus();
+        }
+    })
 }
 
 // This method will be called when Electron has finished
