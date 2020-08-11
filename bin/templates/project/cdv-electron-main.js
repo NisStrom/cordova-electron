@@ -20,13 +20,9 @@
 const fs = require('fs');
 // Module to control application life, browser window and tray.
 const { app, BrowserWindow } = require('electron');
-const { autoUpdater } = require("electron-updater")
 // Electron settings from .json file.
 const cdvElectronSettings = require('./cdv-electron-settings.json');
 
-if (cdvElectronSettings.updateServer) {
-    autoUpdater.setFeedURL(cdvElectronSettings.updateServer);
-}
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
